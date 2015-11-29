@@ -37,16 +37,19 @@ Place = new Mongo.Collection("place");
 
 	UserTrans = new Mongo.Collection("usertrans");
 		UserTrans.attachSchema(new SimpleSchema({
-			UserId: {
+			CarParkId: {
 				type: String
 			},
-			sTime: {
+			fee: {
 				type: String
 			},
-			eTime: {
+			sDate: {
 				type: String
 			},
-			address: {
+			detail: {
+				type: String
+			},
+			state: {
 				type: String
 			}
 		}));
@@ -56,19 +59,16 @@ Place = new Mongo.Collection("place");
 			UserId: {
 				type: String
 			},
-			carId: {
+			transId: {
 				type: String
 			},
 			phonenum: {
 				type: String
 			},
-			sTime: {
+			comment: {
 				type: String
 			},
-			eTime: {
-				type: String
-			},
-			address: {
+			state: {
 				type: String
 			}
 		}));

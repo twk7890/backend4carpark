@@ -12,10 +12,10 @@ TabularTables.UserTrans = new Tabular.Table({
   name: "UserTrans",
   collection: UserTrans,
   columns: [
-    {data: "userId", title: "User"},
-    {data: "sTime", title: "Start Time"},
-    {data: "eTime", title: "End Time"},
-    {data: "address", title: "Address"}
+    {data: "carParkId", title: "CarParkId"},
+    {data: "fee", title: "Fee per hour"},
+    {data: "sDate", title: "Available Time"},
+    {data: "state", title: "State"}
   ]
 });
 
@@ -23,11 +23,10 @@ TabularTables.UserRequest = new Tabular.Table({
   name: "UserRequest",
   collection: UserRequest,
   columns: [
-    {data: "userId", title: "User"},
-    {data: "carId", title: "License Plate"},
+    {data: "TransId", title: "Transactions"},
+    {data: "useId", title: "Users"},
     {data: "phonenum", title: "Phone Number"},
-    {data: "sTime", title: "Start Time"},
-    {data: "eTime", title: "End Time"},
+    {data: "comment", title: "Comment"},
     {data: "State", title: "State"}
   ]
 });
