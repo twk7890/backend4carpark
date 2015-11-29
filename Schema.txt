@@ -1,0 +1,74 @@
+Schema
+
+Place = new Mongo.Collection("place");
+	Place.attachSchema(new SimpleSchema({
+		userId: {
+			type: String
+		},
+		region: {
+			type: String
+		},
+		address: {
+			type: String
+		},
+		timezone: {
+			type: Date
+		},
+		state: {
+			type: String,
+			autoform: {
+			      type: "select",
+			      options: function () {
+			        return [
+			          {label: "active", value: "ACTIVE"},
+			          {label: "suspend", value: "SUSPEND"},
+			        ];
+			      }
+			    }
+		},
+		createdAt: {
+			type: Date,
+			autoform.omit:true,
+			autoValue:function(){
+				return this.isInsert? new Date() : this.val;
+			}
+		}
+	}));
+
+	UserTrans = new Mongo.Collection("usertrans");
+		UserTrans.attachSchema(new SimpleSchema({
+			UserId: {
+				type: String
+			},
+			sTime: {
+				type: String
+			},
+			eTime: {
+				type: String
+			},
+			address: {
+				type: String
+			}
+		}));
+
+	UserRequest = new Mongo.Collection("userrequest");
+		UserRequest.attachSchema(new SimpleSchema({
+			UserId: {
+				type: String
+			},
+			carId: {
+				type: String
+			},
+			phonenum: {
+				type: String
+			},
+			sTime: {
+				type: String
+			},
+			eTime: {
+				type: String
+			},
+			address: {
+				type: String
+			}
+		}));
