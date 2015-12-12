@@ -2,38 +2,55 @@ Schema
 
 Place = new Mongo.Collection("place");
 	Place.attachSchema(new SimpleSchema({
-		userId: {
-			type: String
-		},
-		region: {
-			type: String
-		},
-		address: {
-			type: String
-		},
-		timezone: {
-			type: Date
-		},
-		state: {
-			type: String,
-			autoform: {
-			      type: "select",
-			      options: function () {
-			        return [
-			          {label: "active", value: "ACTIVE"},
-			          {label: "suspend", value: "SUSPEND"},
-			        ];
-			      }
-			    }
-		},
-		createdAt: {
-			type: Date,
-			autoform.omit:true,
-			autoValue:function(){
-				return this.isInsert? new Date() : this.val;
-			}
-		}
-	}));
+    userId: {
+        type: String,
+        autoform:{
+          omit:true
+        },
+        autoValue(){
+          return Meteor.userId() ;
+        }
+    },
+    region: {
+        type: String,
+        autoform:{
+          options:Locations
+        }
+    },
+    address: {
+        type: String
+    },
+    activeTime: {
+        type: String,
+        autoform:{
+          options:time
+        }
+    },
+    rendFee:{
+      type: Number
+    },
+    state: {
+      type: String,
+      autoform: {
+            type: "select",
+            options: function () {
+              return [
+                {label: "active", value: "ACTIVE"},
+                {label: "suspend", value: "SUSPEND"}
+              ];
+            }
+      }
+    },
+    createdAt:{
+      type:Date,
+      autoform:{
+        omit:true
+      },
+      autoValue(){
+        return this.isInsert? new Date(): this.val;
+      }
+    }
+}));
 
 	UserTrans = new Mongo.Collection("usertrans");
 		UserTrans.attachSchema(new SimpleSchema({
@@ -56,19 +73,43 @@ Place = new Mongo.Collection("place");
 
 	UserRequest = new Mongo.Collection("userrequest");
 		UserRequest.attachSchema(new SimpleSchema({
-			UserId: {
-				type: String
-			},
-			transId: {
-				type: String
+			userId: {
+				type: String,
+				autoform:{
+          omit:true
+        },
+        autoValue(){
+          return Meteor.userId() ;
+        }
 			},
 			phonenum: {
-				type: String
+				type: String,
+				label: "Phone Number"
 			},
 			comment: {
-				type: String
+				type: String,
+				  min: 0,
+      			  max: 1000,
+      			  autoform: {
+         		  rows: 5
+     	    }
 			},
 			state: {
-				type: String
+				type: String,
+				autoform:{
+          		omit:true
+        },
+        		autoValue(){        		
+          		return request;
 			}
+		},
+		createdAt:{
+      type:Date,
+      autoform:{
+        omit:true
+      },
+      autoValue(){
+        return this.isInsert? new Date(): this.val;
+      }
+    }
 		}));

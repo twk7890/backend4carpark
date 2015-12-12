@@ -24,10 +24,12 @@ TabularTables.UserRequest = new Tabular.Table({
   collection: UserRequest,
   columns: [
     {data: "TransId", title: "Transactions"},
-    {data: "useId", title: "Users"},
+    {data: "useId", title: "UsersId"},
+    {data: "placeId", title: "PlaceId"},
     {data: "phonenum", title: "Phone Number"},
     {data: "comment", title: "Comment"},
-    {data: "State", title: "State"}
+    {data: "State", title: "State"},
+    {data: "createdAt", title: "Created Time"}
   ]
 });
 
@@ -44,10 +46,13 @@ TabularTables.Place = new Tabular.Table({
   name: "Place",
   collection: Place,
   columns: [
-  	{data: "userId", title: "Boss"},
+  	{data: "userId", title: "BossId"},
   	{data: "region", title: "Region"},
+    {data: "activeTime", title: "Active Time"},
     {data: "address", title: "Place"},
-    {data: "state", title: "State"}
+    {data: "rendFee", title: "Rent per hour"},
+    {data: "state", title: "State"},
+    {data: "createdAt", title: "Created Time"}
   ]
 });
 
