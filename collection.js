@@ -66,6 +66,7 @@ Router.configure({
 });
 
 Router.route('/loginForm');
+Router.route('/Charts');
 Router.route('/UserTrans');
 Router.route('/Request');
 Router.route('/Users');
